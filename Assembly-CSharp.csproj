@@ -84,14 +84,18 @@
     <Compile Include="Assets\Scripts\SpriteOutline.cs" />
     <Compile Include="Assets\Scripts\UI\Bag\BagGrid.cs" />
     <Compile Include="Assets\Scripts\UI\Bag\BagPanel.cs" />
-    <Compile Include="Assets\Scripts\UI\Bag\PlayerBagGrid.cs" />
+    <Compile Include="Assets\Scripts\UI\Bag\ItemInfoPanel.cs" />
     <Compile Include="Assets\Scripts\UI\Bag\PlayerBagPanel.cs" />
+    <Compile Include="Assets\Scripts\UI\Bag\ShopBagPanel.cs" />
+    <Compile Include="Assets\Scripts\UI\Enum\GridManagerFlag.cs" />
+    <Compile Include="Assets\Scripts\UI\Grid.cs" />
+    <Compile Include="Assets\Scripts\UI\GridManager.cs" />
     <Compile Include="Assets\Scripts\UI\StatePanel.cs" />
     <Compile Include="Assets\Scripts\UI\UIInit.cs" />
-    <Compile Include="Assets\Scripts\Utils\CommonUtils.cs" />
     <Compile Include="Assets\Scripts\Utils\JsonUtils.cs" />
     <Compile Include="Assets\Scripts\Utils\Singleton\MonoSingleton.cs" />
     <Compile Include="Assets\Scripts\Utils\Singleton\Singleton.cs" />
+    <Compile Include="Assets\Scripts\Utils\Util.cs" />
     <None Include="Assets\Resources\Shaders\Outline.shader" />
     <Reference Include="UnityEngine">
       <HintPath>G:/Unity201948/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>

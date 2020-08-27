@@ -62,7 +62,7 @@ namespace Game
 
         private void OnMouseOver()
         {
-            if (CommonUtils.IsMouseOverUI())
+            if (Util.IsMouseOverUI())
             {
                 Focus = false;
             }

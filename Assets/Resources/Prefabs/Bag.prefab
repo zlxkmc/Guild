@@ -205,7 +205,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemImage: {fileID: 3784340912294705210}
   _countText: {fileID: 3784340910730861722}
-  _itemGroupTrans: {fileID: 2333417521044706224}
+  _itemGroupGo: {fileID: 1437808638097272355}
 --- !u!1 &3784340911455743936
 GameObject:
   m_ObjectHideFlags: 0
@@ -507,7 +507,7 @@ GameObject:
   - component: {fileID: 3784340912491113109}
   - component: {fileID: 3784340912491113107}
   - component: {fileID: 3784340912491113108}
-  - component: {fileID: 3784340912491113106}
+  - component: {fileID: 4849727805254519886}
   m_Layer: 5
   m_Name: Bag
   m_TagString: Untagged
@@ -575,7 +575,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3784340912491113106
+--- !u!114 &4849727805254519886
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -584,7 +584,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3784340912491113110}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31aed9ea4db7f5e4b995541c28f97c39, type: 3}
+  m_Script: {fileID: 11500000, guid: d2a5f4304ab4f2d40a1a6bb926e0e8ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _content: {fileID: 3784340912327299038}

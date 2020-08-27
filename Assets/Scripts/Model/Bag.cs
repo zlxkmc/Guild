@@ -94,12 +94,12 @@ namespace Game
 
         /// <summary>
         /// 背包某个位置的物品组
-        /// <param name="pos"></param>
+        /// <param name="index"></param>
         /// <returns></returns>
         /// </summary>
-        public ItemGroup GetItemGroup(int pos)
+        public ItemGroup GetItemGroup(int index)
         {
-            return _itemGroups[pos];
+            return _itemGroups[index];
         }
 
         /// <summary>
@@ -120,7 +120,6 @@ namespace Game
 
             //可以堆叠的物品组
             ItemGroup itemGroup = FindItemGroup(v => Item.IsCanStack(v.Item, item) && v.Count < maxStack);
-
 
             if (itemGroup == null) // 没有可以堆叠的地方
             {
@@ -187,12 +186,12 @@ namespace Game
         /// 添加物品到某个位置
         /// <param name="item">物品</param>
         /// <param name="count">数量</param>
-        /// <param name="pos">位置</param>
+        /// <param name="index">位置</param>
         /// <retures>剩余未添加的数量</retures>
         /// </summary>
-        public int AddItem(Item item, int count, int pos)
+        public int AddItem(Item item, int count, int index)
         {
-            ItemGroup itemGroup = _itemGroups[pos];
+            ItemGroup itemGroup = _itemGroups[index];
             
             if(itemGroup == null) // 目标位置没有物品
             {
@@ -221,7 +220,7 @@ namespace Game
 
                 newItemGroup.Count = addedCount;
 
-                _itemGroups[pos] = newItemGroup;
+                _itemGroups[index] = newItemGroup;
 
                 return count - addedCount;
             }
@@ -249,6 +248,16 @@ namespace Game
             }
         }
 
+        /// <summary>
+        /// 添加物品组到某个位置
+        /// <param name="itemGroup">物品组</param>
+        /// <param name="index">位置</param>
+        /// <retures>剩余未添加的数量</retures>
+        /// </summary>
+        public int AddItemGroup(ItemGroup itemGroup, int index)
+        {
+            return AddItem(itemGroup.Item, itemGroup.Count, index);
+        }
         /// <summary>
         /// 移动物品组
         /// </summary>
@@ -299,9 +308,13 @@ namespace Game
         /// 移除某个位置的物品组
         /// </summary>
         /// <param name="pos">要移除的位置</param>
-        public void RemoveItemGroup(int pos)
+        /// <retures>移除的物品组</retures>
+        public ItemGroup RemoveItemGroup(int pos)
         {
+            ItemGroup removed = _itemGroups[pos];
             _itemGroups[pos] = null;
+
+            return removed;
         }
 
         /// <summary>
@@ -311,7 +324,7 @@ namespace Game
         {
             for (int i = 0; i < Size; i++)
             {
-                if (_itemGroups[i] == null) // 说明i位置没有物品组
+                if (_itemGroups[i] == null)
                 {
                     return i;
                 }

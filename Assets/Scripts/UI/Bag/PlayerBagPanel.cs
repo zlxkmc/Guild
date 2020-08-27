@@ -12,62 +12,31 @@ namespace Game.UI
     /// </summary>
     public class PlayerBagPanel : BagPanel
     {
-        /// <summary>
-        /// 拖拽中的格子
-        /// </summary>
-        private BagGrid _draggingGrid;
-        /// <summary>
-        /// 拖拽的物品组ui
-        /// </summary>
-        private Transform _draggingTarget;
-        /// <summary>
-        /// 鼠标进入的格子
-        /// </summary>
-        private BagGrid _enteredGird;
+        public override GridManagerFlag Flag => GridManagerFlag.PlayerBag;
 
-        public override void OnGridDrag(BagGrid bagGrid, PointerEventData eventData)
+        public override void OnGridDragEnd(Grid originalGrid, Grid targetGrid, PointerEventData eventData)
         {
-            if(bagGrid.ItemGroup != null)
+            base.OnGridDragEnd(originalGrid, targetGrid, eventData);
+
+            BagGrid originalBagGrid = (BagGrid)originalGrid;
+            BagGrid targetBagGrid = (BagGrid)targetGrid;
+
+            if (targetGrid != null)
             {
-                _draggingGrid = bagGrid;
-                _draggingTarget = _draggingGrid.ItemGroupTrans;
-                _draggingTarget.position = Input.mousePosition;
-                _draggingTarget.parent = transform;
-            }
-        }
-
-        public override void OnGridPointerDown(BagGrid bagGrid, PointerEventData eventData)
-        {
-
-        }
-
-        public override void OnGridPointerEnter(BagGrid bagGrid, PointerEventData eventData)
-        {
-            _enteredGird = bagGrid;
-        }
-
-        public override void OnGridPointerExit(BagGrid bagGrid, PointerEventData eventData)
-        {
-            if(bagGrid == _enteredGird)
-            {
-                _enteredGird = null;
-            }
-        }
-
-        public override void OnGridPointerUp(BagGrid bagGrid, PointerEventData eventData)
-        {
-            if(_draggingGrid != null)
-            {
-                _draggingTarget.parent = _draggingGrid.transform;
-                _draggingTarget.localPosition = Vector2.zero;
-
-                if(_enteredGird != null)
+                if(targetGrid.Manager.Flag == GridManagerFlag.ShopBag) // 拖到商店的格子上
                 {
-                    Bag.MoveItemGroup(_draggingGrid.Pos, _enteredGird.Pos);
-                }
+                    // 出售
+                    BagPanel shopBagPanel = targetBagGrid.Manager;
+                    Bag shopBag = shopBagPanel.Bag;
 
-                _draggingGrid = null;
-                _draggingTarget = null;
+                    ItemGroup selling = Bag.RemoveItemGroup(originalBagGrid.Index);
+                    selling.Count = shopBagPanel.Bag.AddItemGroup(selling, targetBagGrid.Index);
+
+                    if(selling.Count > 0) // 没卖完
+                    {
+                        Bag.AddItemGroup(selling, originalBagGrid.Index);
+                    }
+                }
             }
         }
     }

@@ -7,7 +7,10 @@ using UnityEngine.UI;
 
 namespace Game.UI
 {
-    public class BagPanel : MonoBehaviour
+    /// <summary>
+    /// 背包面板
+    /// </summary>
+    public abstract class BagPanel : GridManager
     {
         [Tooltip("格子容器")]
         [SerializeField]
@@ -17,22 +20,20 @@ namespace Game.UI
         [SerializeField]
         private BagGrid _grid;
 
-
-        private Bag _bag;
-
-        public Bag Bag {
+        public Bag Bag
+        {
             get
             {
                 return _bag;
             }
             set
             {
-                if(value == _bag)
+                if (value == _bag)
                 {
                     return;
                 }
 
-                if(_bag == null)
+                if (_bag == null)
                 {
                     for (int i = 0; i < value.Size; i++)
                     {
@@ -67,67 +68,85 @@ namespace Game.UI
         }
 
 
-        // Start is called before the first frame update
-        void Start()
-        {
-            _grid.gameObject.SetActive(false);
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
         /// <summary>
-        /// 在某个格子上按下
+        /// 鼠标在的格子
         /// </summary>
-        /// <param name="bagGrid">对应的格子</param>
-        /// /// <param name="eventData"></param>
-        public virtual void OnGridPointerDown(BagGrid bagGrid, PointerEventData eventData)
-        {
-
-        }
-
+        public new BagGrid PointerOverGrid { get => (BagGrid)base.PointerOverGrid; }
         /// <summary>
-        /// 在某个格子上抬起
+        /// 拖拽中的格子
         /// </summary>
-        /// <param name="bagGrid">对应的格子</param>
-        /// <param name="eventData"></param>
-        public virtual void OnGridPointerUp(BagGrid bagGrid, PointerEventData eventData)
+        public new BagGrid DraggingGrid { get => (BagGrid)base.DraggingGrid; }
+
+        private Bag _bag;
+        private ItemInfoPanel _itemInfoPanel;
+
+        public override void Update()
         {
+            base.Update();
 
-        }
-
-        /// <summary>
-        /// 拖拽某个格子
-        /// </summary>
-        /// <param name="bagGrid">对应的格子</param>
-        /// /// <param name="eventData"></param>
-        public virtual void OnGridDrag(BagGrid bagGrid, PointerEventData eventData)
-        {
-
-        }
-
-        /// <summary>
-        ///进入某个格子
-        /// </summary>
-        /// <param name="bagGrid">对应的格子</param>
-        /// /// <param name="eventData"></param>
-        public virtual void OnGridPointerEnter(BagGrid bagGrid, PointerEventData eventData)
-        {
-
+            if(DraggingGrid != null)
+            {
+                if(DraggingGrid.ItemGroup != null)
+                {
+                    DraggingGrid.ItemGroupGo.transform.position = Input.mousePosition;
+                    DraggingGrid.ItemGroupGo.transform.parent = GameObject.Find("Canvas").transform;
+                }
+            }
         }
 
 
-        /// <summary>
-        ///离开某个格子
-        /// </summary>
-        /// <param name="bagGrid">对应的格子</param>
-        /// /// <param name="eventData"></param>
-        public virtual void OnGridPointerExit(BagGrid bagGrid, PointerEventData eventData)
+        public override void OnPointerUpGrid(Grid grid, PointerEventData eventData)
         {
+            base.OnPointerUpGrid(grid, eventData);
 
+            BagGrid bagGrid = (BagGrid)grid;
+
+            bagGrid.ItemGroupGo.transform.parent = bagGrid.transform;
+            bagGrid.ItemGroupGo.transform.localPosition = Vector2.zero;
+        }
+
+
+        public override void OnPointerOverGrid(Grid grid)
+        {
+            base.OnPointerOverGrid(grid);
+
+            BagGrid bagGrid = (BagGrid)grid;
+
+            if (bagGrid.ItemGroup != null && bagGrid != DraggingGrid)
+            {
+                if (_itemInfoPanel == null)
+                {
+                    _itemInfoPanel = Instantiate(ResManager.Prefabs["ItemInfoPanel"], transform).GetComponent<ItemInfoPanel>();
+                }
+
+                _itemInfoPanel.SetPos(bagGrid.transform.position);
+                _itemInfoPanel.gameObject.SetActive((true));
+                _itemInfoPanel.Item = bagGrid.ItemGroup.Item;
+            }
+        }
+
+        public override void OnPointerExitGrid(Grid grid, PointerEventData eventData)
+        {
+            base.OnPointerExitGrid(grid, eventData);
+
+            if (PointerOverGrid == null && _itemInfoPanel != null)
+            {
+                Destroy(_itemInfoPanel.gameObject);
+                _itemInfoPanel = null;
+            }
+        }
+
+        public override void OnGridDragEnd(Grid originalGrid, Grid targetGrid, PointerEventData eventData)
+        {
+            base.OnGridDragEnd(originalGrid, targetGrid, eventData);
+
+            BagGrid originalBagGrid = (BagGrid)originalGrid;
+            BagGrid targetBagGrid = (BagGrid)targetGrid;
+
+            if (targetGrid != null && targetGrid.Manager == this) // 在同一GridManager中拖拽
+            {
+                Bag.MoveItemGroup(originalBagGrid.Index, targetBagGrid.Index);
+            }
         }
     }
 }

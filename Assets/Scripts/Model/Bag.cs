@@ -318,6 +318,31 @@ namespace Game
         }
 
         /// <summary>
+        /// 移除某个位置一定数量的物体
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <param name="count"></param>
+        /// <returns>移除的物体组</returns>
+        public ItemGroup RemoveItem(int pos, int count)
+        {
+            ItemGroup targetItemGroup = _itemGroups[pos];
+            ItemGroup removedItemGroup = new ItemGroup() { Item = targetItemGroup.Item };
+
+            if(targetItemGroup.Count > count) // 有剩余
+            {
+                targetItemGroup.Count -= count;
+                removedItemGroup.Count = count;
+            }
+            else // 无剩余
+            {
+                removedItemGroup.Count = targetItemGroup.Count;
+                _itemGroups[pos] = null;
+            }
+
+            return removedItemGroup;
+        }
+
+        /// <summary>
         /// 背包的第一个空位
         /// </summary>
         private int FindFirstEmptyPos()

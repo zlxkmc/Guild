@@ -1,4 +1,5 @@
-﻿
+﻿using System;
+
 namespace Game
 {
     /// <summary>
@@ -100,6 +101,12 @@ namespace Game
         /// 背包
         /// </summary>
         public Bag Bag { get; private set; } = new Bag();
+
+        /// <summary>
+        /// 装备
+        /// </summary>
+        public Item[] Equipments { get; private set; } = new Item[10];
+
 
         /// <summary>
         /// 生命上限
@@ -206,13 +213,36 @@ namespace Game
             StatPoint -= num;
         }
 
+        public Item GetEquipment(EquipmentSlotType type)
+        {
+            return Equipments[(int)type];
+        }
+
         /// <summary>
         /// 装备物品
         /// </summary>
         /// <param name="item"></param>
-        public void Equip(Item item)
+        public bool Equip(Item item, EquipmentSlotType type)
         {
-            
+            bool success = false;
+
+            if(item != null)
+            {
+                switch (type)
+                {
+                    case EquipmentSlotType.Weapon:
+                        if (item.Type == ItemType.Weapon)
+                            success = true;
+                        break;
+                }
+            }
+
+            if (success)
+            {
+                Equipments[(int)type] = item;
+            }
+
+            return success;
         }
     }
 }

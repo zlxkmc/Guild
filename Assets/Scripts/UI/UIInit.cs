@@ -8,18 +8,24 @@ namespace Game.UI
     {
         // Start is called before the first frame update
 
+        [SerializeField]
         private StatePanel _playerStatePanel;
+
+        [SerializeField]
         private PlayerBagPanel _playerBagPanel;
+
+        [SerializeField]
+        private EquipmentPanel _playerEquipmentPanel;
+        
 
         void Start()
         {
-            _playerStatePanel = transform.Find("PlayerState").GetComponent<StatePanel>();
-            _playerBagPanel = transform.Find("PlayerBag").GetComponent<PlayerBagPanel>();
-
             _playerStatePanel.gameObject.SetActive(true);
 
             _playerBagPanel.Bag = GameData.Player.Bag;
             _playerBagPanel.gameObject.SetActive(true);
+
+            _playerEquipmentPanel.Character = GameData.Player;
         }
 
         // Update is called once per frame

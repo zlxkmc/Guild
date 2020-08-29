@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace Game.UI
 {
     /// <summary>
-    /// 格子管理器标志
+    /// 槽管理器标志
     /// </summary>
-    public enum GridManagerFlag
+    public enum SlotManagerFlag
     {
         /// <summary>
         /// 玩家背包
@@ -19,5 +19,9 @@ namespace Game.UI
         /// 商店背包
         /// </summary>
         ShopBag,
+        /// <summary>
+        /// 玩家装备面板
+        /// </summary>
+        PlayerEquipments,
     }
 }

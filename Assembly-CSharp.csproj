@@ -63,10 +63,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Config\ItemConfig.cs" />
-    <Compile Include="Assets\Scripts\Core\SkillSystem\ActiveSkill.cs" />
-    <Compile Include="Assets\Scripts\Core\SkillSystem\Skill.cs" />
-    <Compile Include="Assets\Scripts\Core\SkillSystem\SkillType.cs" />
     <Compile Include="Assets\Scripts\DepthTest.cs" />
+    <Compile Include="Assets\Scripts\Enum\EquipmentSlotType.cs" />
     <Compile Include="Assets\Scripts\Enum\ItemType.cs" />
     <Compile Include="Assets\Scripts\Enum\StatPointType.cs" />
     <Compile Include="Assets\Scripts\GameConfg.cs" />
@@ -75,21 +73,27 @@
     <Compile Include="Assets\Scripts\GameSetting.cs" />
     <Compile Include="Assets\Scripts\Model\Bag.cs" />
     <Compile Include="Assets\Scripts\Model\Character.cs" />
-    <Compile Include="Assets\Scripts\Model\Item.cs" />
+    <Compile Include="Assets\Scripts\Model\Item\Item.cs" />
+    <Compile Include="Assets\Scripts\Model\Item\Weapon.cs" />
     <Compile Include="Assets\Scripts\Model\ItemGroup.cs" />
     <Compile Include="Assets\Scripts\PlayerCameraController.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\ResManager.cs" />
     <Compile Include="Assets\Scripts\Shop.cs" />
+    <Compile Include="Assets\Scripts\SkillSystem\ActiveSkill.cs" />
+    <Compile Include="Assets\Scripts\SkillSystem\Skill.cs" />
+    <Compile Include="Assets\Scripts\SkillSystem\SkillType.cs" />
     <Compile Include="Assets\Scripts\SpriteOutline.cs" />
-    <Compile Include="Assets\Scripts\UI\Bag\BagGrid.cs" />
     <Compile Include="Assets\Scripts\UI\Bag\BagPanel.cs" />
+    <Compile Include="Assets\Scripts\UI\Bag\BagSlot.cs" />
     <Compile Include="Assets\Scripts\UI\Bag\ItemInfoPanel.cs" />
     <Compile Include="Assets\Scripts\UI\Bag\PlayerBagPanel.cs" />
     <Compile Include="Assets\Scripts\UI\Bag\ShopBagPanel.cs" />
     <Compile Include="Assets\Scripts\UI\Enum\GridManagerFlag.cs" />
-    <Compile Include="Assets\Scripts\UI\Grid.cs" />
-    <Compile Include="Assets\Scripts\UI\GridManager.cs" />
+    <Compile Include="Assets\Scripts\UI\Equipment\EquipmentPanel.cs" />
+    <Compile Include="Assets\Scripts\UI\Equipment\EquipmentSlot.cs" />
+    <Compile Include="Assets\Scripts\UI\Slot.cs" />
+    <Compile Include="Assets\Scripts\UI\SlotManager.cs" />
     <Compile Include="Assets\Scripts\UI\StatePanel.cs" />
     <Compile Include="Assets\Scripts\UI\UIInit.cs" />
     <Compile Include="Assets\Scripts\Utils\JsonUtils.cs" />

@@ -32,7 +32,7 @@ namespace Game
         /// <summary>
         /// 类型
         /// </summary>
-        public int Type { get; set; }
+        public ItemType Type { get; set; }
 
         /// <summary>
         /// 图标名

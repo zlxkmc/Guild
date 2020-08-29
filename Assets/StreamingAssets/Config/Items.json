@@ -5,13 +5,13 @@
     "Describe": "无",
     "Value": 1000,
     "Weight": 3,
-    "Type": 0,
+    "Type": 1,
     "IconName": "tiejian",
     "Stack": false
   },
   {
     "Id": "2",
-    "Name": "测试",
+    "Name": "其他",
     "Describe": "无",
     "Value": 500,
     "Weight": 1,

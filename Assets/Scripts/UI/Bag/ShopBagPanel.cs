@@ -12,29 +12,35 @@ namespace Game.UI
     /// </summary>
     public class ShopBagPanel : BagPanel
     {
-        public override GridManagerFlag Flag => GridManagerFlag.ShopBag;
+        public override SlotManagerFlag Flag => SlotManagerFlag.ShopBag;
 
-        public override void OnGridDragEnd(Grid originalGrid, Grid targetGrid, PointerEventData eventData)
+        public override void OnSlotDragEnd(Slot originalSlot, Slot targetSlot, PointerEventData eventData)
         {
-            base.OnGridDragEnd(originalGrid, targetGrid, eventData);
+            base.OnSlotDragEnd(originalSlot, targetSlot, eventData);
 
-            BagGrid originalBagGrid = (BagGrid)originalGrid;
-            BagGrid targetBagGrid = (BagGrid)targetGrid;
-
-            if (targetGrid != null)
+            BagSlot originalBagSlot = (BagSlot)originalSlot;
+            
+            if (targetSlot != null && originalBagSlot.ItemGroup != null)
             {
-                if (targetGrid.Manager.Flag == GridManagerFlag.PlayerBag) // 拖到玩家的背包格子上
+                if (targetSlot.Manager == this) // 在同一SlotManager中拖拽
                 {
+                    BagSlot targetBagSlot = (BagSlot)targetSlot;
+                    Bag.MoveItemGroup(originalBagSlot.Index, targetBagSlot.Index);
+                }
+                else if (targetSlot.Manager.Flag == SlotManagerFlag.PlayerBag) // 拖到玩家的背包格子上
+                {
+                    BagSlot targetBagSlot = (BagSlot)targetSlot;
+
                     // 出售
-                    BagPanel playerBagPanel = targetBagGrid.Manager;
+                    BagPanel playerBagPanel = targetBagSlot.Manager;
                     Bag playerBag = playerBagPanel.Bag;
 
-                    ItemGroup purchased = Bag.RemoveItemGroup(originalBagGrid.Index);
-                    purchased.Count = playerBagPanel.Bag.AddItemGroup(purchased, targetBagGrid.Index);
+                    ItemGroup purchased = Bag.RemoveItemGroup(originalBagSlot.Index);
+                    purchased.Count = playerBagPanel.Bag.AddItemGroup(purchased, targetBagSlot.Index);
 
                     if (purchased.Count > 0) // 没卖完
                     {
-                        Bag.AddItemGroup(purchased, originalBagGrid.Index);
+                        Bag.AddItemGroup(purchased, originalBagSlot.Index);
                     }
                 }
             }

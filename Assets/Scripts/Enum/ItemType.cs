@@ -9,6 +9,10 @@ namespace Game
     public enum ItemType
     {
         /// <summary>
+        /// 其他物品
+        /// </summary>
+        Other,
+        /// <summary>
         /// 武器
         /// </summary>
         Weapon

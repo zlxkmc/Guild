@@ -10,15 +10,15 @@ namespace Game.UI
     /// <summary>
     /// 背包面板
     /// </summary>
-    public abstract class BagPanel : GridManager
+    public abstract class BagPanel : SlotManager
     {
-        [Tooltip("格子容器")]
+        [Tooltip("槽的容器")]
         [SerializeField]
         private Transform _content;
 
-        [Tooltip("格子模板")]
+        [Tooltip("背包槽的模板")]
         [SerializeField]
-        private BagGrid _grid;
+        private BagSlot _slot;
 
         public Bag Bag
         {
@@ -37,24 +37,23 @@ namespace Game.UI
                 {
                     for (int i = 0; i < value.Size; i++)
                     {
-                        GameObject go = Instantiate(_grid.gameObject, _content);
+                        GameObject go = Instantiate(_slot.gameObject, _content);
                         go.SetActive(true);
-                        BagGrid grid = go.GetComponent<BagGrid>();
                     }
                 }
                 else
                 {
-                    //格子不够
+                    //槽不够
                     if (_bag.Size < value.Size)
                     {
                         for (int i = _bag.Size; i < value.Size; i++)
                         {
-                            GameObject go = Instantiate(_grid.gameObject, _content);
+                            GameObject go = Instantiate(_slot.gameObject, _content);
                             go.SetActive(true);
-                            BagGrid grid = go.GetComponent<BagGrid>();
+                            BagSlot slot = go.GetComponent<BagSlot>();
                         }
                     }
-                    else // 格子多了
+                    else // 槽多了
                     {
                         for (int i = _bag.Size - 1; i >= value.Size; i--)
                         {
@@ -69,13 +68,13 @@ namespace Game.UI
 
 
         /// <summary>
-        /// 鼠标在的格子
+        /// 鼠标在的槽
         /// </summary>
-        public new BagGrid PointerOverGrid { get => (BagGrid)base.PointerOverGrid; }
+        public new BagSlot PointerOverSlot { get => (BagSlot)base.PointerOverSlot; }
         /// <summary>
-        /// 拖拽中的格子
+        /// 拖拽中的槽
         /// </summary>
-        public new BagGrid DraggingGrid { get => (BagGrid)base.DraggingGrid; }
+        public new BagSlot DraggingSlot { get => (BagSlot)base.DraggingSlot; }
 
         private Bag _bag;
         private ItemInfoPanel _itemInfoPanel;
@@ -84,69 +83,61 @@ namespace Game.UI
         {
             base.Update();
 
-            if(DraggingGrid != null)
+            if(DraggingSlot != null)
             {
-                if(DraggingGrid.ItemGroup != null)
+                if(DraggingSlot.ItemGroup != null)
                 {
-                    DraggingGrid.ItemGroupGo.transform.position = Input.mousePosition;
-                    DraggingGrid.ItemGroupGo.transform.parent = GameObject.Find("Canvas").transform;
+                    DraggingSlot.ItemGroupGo.transform.position = Input.mousePosition;
+                    DraggingSlot.ItemGroupGo.transform.parent = GameObject.Find("Canvas").transform;
                 }
             }
         }
 
 
-        public override void OnPointerUpGrid(Grid grid, PointerEventData eventData)
+        public override void OnPointerUpSlot(Slot slot, PointerEventData eventData)
         {
-            base.OnPointerUpGrid(grid, eventData);
+            base.OnPointerUpSlot(slot, eventData);
 
-            BagGrid bagGrid = (BagGrid)grid;
+            BagSlot bagSlot = (BagSlot)slot;
 
-            bagGrid.ItemGroupGo.transform.parent = bagGrid.transform;
-            bagGrid.ItemGroupGo.transform.localPosition = Vector2.zero;
+            bagSlot.ItemGroupGo.transform.parent = bagSlot.transform;
+            bagSlot.ItemGroupGo.transform.localPosition = Vector2.zero;
         }
 
 
-        public override void OnPointerOverGrid(Grid grid)
+        public override void OnPointerOverSlot(Slot slot)
         {
-            base.OnPointerOverGrid(grid);
+            base.OnPointerOverSlot(slot);
 
-            BagGrid bagGrid = (BagGrid)grid;
+            BagSlot bagSlot = (BagSlot)slot;
 
-            if (bagGrid.ItemGroup != null && bagGrid != DraggingGrid)
+            if (bagSlot.ItemGroup != null && bagSlot != DraggingSlot)
             {
                 if (_itemInfoPanel == null)
                 {
                     _itemInfoPanel = Instantiate(ResManager.Prefabs["ItemInfoPanel"], transform).GetComponent<ItemInfoPanel>();
                 }
 
-                _itemInfoPanel.SetPos(bagGrid.transform.position);
+                _itemInfoPanel.SetPos(bagSlot.transform.position);
                 _itemInfoPanel.gameObject.SetActive((true));
-                _itemInfoPanel.Item = bagGrid.ItemGroup.Item;
+                _itemInfoPanel.Item = bagSlot.ItemGroup.Item;
             }
         }
 
-        public override void OnPointerExitGrid(Grid grid, PointerEventData eventData)
+        public override void OnPointerExitSlot(Slot slot, PointerEventData eventData)
         {
-            base.OnPointerExitGrid(grid, eventData);
+            base.OnPointerExitSlot(slot, eventData);
 
-            if (PointerOverGrid == null && _itemInfoPanel != null)
+            if (PointerOverSlot == null && _itemInfoPanel != null)
             {
                 Destroy(_itemInfoPanel.gameObject);
                 _itemInfoPanel = null;
             }
         }
 
-        public override void OnGridDragEnd(Grid originalGrid, Grid targetGrid, PointerEventData eventData)
+        public override void OnSlotDragEnd(Slot originalSlot, Slot targetSlot, PointerEventData eventData)
         {
-            base.OnGridDragEnd(originalGrid, targetGrid, eventData);
-
-            BagGrid originalBagGrid = (BagGrid)originalGrid;
-            BagGrid targetBagGrid = (BagGrid)targetGrid;
-
-            if (targetGrid != null && targetGrid.Manager == this) // 在同一GridManager中拖拽
-            {
-                Bag.MoveItemGroup(originalBagGrid.Index, targetBagGrid.Index);
-            }
+            base.OnSlotDragEnd(originalSlot, targetSlot, eventData);
         }
     }
 }

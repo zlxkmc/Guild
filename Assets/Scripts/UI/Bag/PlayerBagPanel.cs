@@ -20,14 +20,14 @@ namespace Game.UI
 
             BagSlot originalBagSlot = (BagSlot)originalSlot;
 
-            if (targetSlot.Manager == this) // 在同一SlotManager中拖拽
+            if (targetSlot != null && originalBagSlot.ItemGroup != null)
             {
-                BagSlot targetBagSlot = (BagSlot)targetSlot;
-                Bag.MoveItemGroup(originalBagSlot.Index, targetBagSlot.Index);
-            }
-            else if (targetSlot != null && originalBagSlot.ItemGroup != null)
-            {
-                if(targetSlot.Manager.Flag == SlotManagerFlag.ShopBag) // 拖到商店的格子上
+                if (targetSlot.Manager == this) // 在同一SlotManager中拖拽
+                {
+                    BagSlot targetBagSlot = (BagSlot)targetSlot;
+                    Bag.MoveItemGroup(originalBagSlot.Index, targetBagSlot.Index);
+                }
+                else if (targetSlot.Manager.Flag == SlotManagerFlag.ShopBag) // 拖到商店的格子上
                 {
                     BagSlot targetBagSlot = (BagSlot)targetSlot;
 
@@ -48,10 +48,17 @@ namespace Game.UI
                     EquipmentSlot targetEquipmentSlot = (EquipmentSlot)targetSlot;
                     Character character = targetEquipmentSlot.Manager.Character;
                     Item equipment = originalBagSlot.ItemGroup.Item;
+                    // 替换装备
+                    Item replaceEquipment = targetEquipmentSlot.Item;
 
                     if (character.Equip(equipment, targetEquipmentSlot.EquipmentSlotType)) // 装备成功
                     {
                         Bag.RemoveItem(originalBagSlot.Index, 1);
+                        if(replaceEquipment != null)
+                        {
+                            Bag.AddItem(replaceEquipment, 1, originalBagSlot.Index);
+                        }
+
                     }
                 }
             }

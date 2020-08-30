@@ -191,6 +191,10 @@ namespace Game
         /// </summary>
         public int AddItem(Item item, int count, int index)
         {
+            if(item == null)
+            {
+                Debug.LogError("要添加的物品为null");
+            }
             ItemGroup itemGroup = _itemGroups[index];
             
             if(itemGroup == null) // 目标位置没有物品

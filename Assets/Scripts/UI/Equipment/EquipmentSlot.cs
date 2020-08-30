@@ -13,10 +13,6 @@ namespace Game.UI
         [SerializeField]
         private Image _itemImage;
 
-        [Tooltip("数量文本")]
-        [SerializeField]
-        private Text _countText;
-
         [Tooltip("可以用来拖拽的整体")]
         [SerializeField]
         private GameObject _content;

@@ -36,11 +36,11 @@ namespace Game.UI
                     Bag shopBag = shopBagPanel.Bag;
 
                     ItemGroup selling = Bag.RemoveItemGroup(originalBagSlot.Index);
-                    selling.Count = shopBagPanel.Bag.AddItemGroup(selling, targetBagSlot.Index);
+                    selling.Count = shopBagPanel.Bag.AddItemGroup(targetBagSlot.Index, selling);
 
                     if(selling.Count > 0) // 没卖完
                     {
-                        Bag.AddItemGroup(selling, originalBagSlot.Index);
+                        Bag.AddItemGroup(originalBagSlot.Index, selling);
                     }
                 }
                 else if(targetSlot.Manager.Flag == SlotManagerFlag.PlayerEquipments) // 拖到装备槽上
@@ -53,10 +53,10 @@ namespace Game.UI
 
                     if (character.Equip(equipment, targetEquipmentSlot.EquipmentSlotType)) // 装备成功
                     {
-                        Bag.RemoveItem(originalBagSlot.Index, 1);
+                        Bag.RemoveItemGroup(originalBagSlot.Index);
                         if(replaceEquipment != null)
                         {
-                            Bag.AddItem(replaceEquipment, 1, originalBagSlot.Index);
+                            Bag.AddItem(originalBagSlot.Index, replaceEquipment, 1);
                         }
 
                     }

@@ -1,22 +1,22 @@
 ﻿[
   {
-    "Id": "1",
+    "Id": "0",
     "Name": "铁剑",
     "Describe": "无",
     "Value": 1000,
     "Weight": 3,
     "Type": 1,
-    "IconName": "tiejian",
-    "Stack": false
+    "Stack": false,
+    "IconPath": "Sprites/Item/tiejian"
   },
   {
-    "Id": "2",
+    "Id": "1",
     "Name": "其他",
     "Describe": "无",
     "Value": 500,
     "Weight": 1,
     "Type": 0,
-    "IconName": "zhengmian",
-    "Stack": true
+    "Stack": true,
+    "IconPath": "Sprites/Others/shangdian"
   }
 ]

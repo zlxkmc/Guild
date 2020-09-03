@@ -1,0 +1,371 @@
+fileFormatVersion: 2
+guid: b4626c8595156c548897478112c37b7b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1985786773903665517
+    second: huikan_0
+  - first:
+      213: 4791019221495359334
+    second: huikan_1
+  - first:
+      213: -2931683813221903758
+    second: huikan_2
+  - first:
+      213: -7258213043800953863
+    second: huikan_3
+  - first:
+      213: -5784202651372860191
+    second: huikan_4
+  - first:
+      213: 8936660939544489636
+    second: huikan_5
+  - first:
+      213: 7413992686240648800
+    second: huikan_6
+  - first:
+      213: 3565366901911629184
+    second: huikan_7
+  - first:
+      213: -8346147466904720713
+    second: huikan_8
+  - first:
+      213: 4859071220548320986
+    second: huikan_9
+  - first:
+      213: -6129342319663461412
+    second: huikan_10
+  - first:
+      213: 2769302891140665084
+    second: huikan_11
+  - first:
+      213: 2115109680174739657
+    second: huikan_12
+  - first:
+      213: -6816272440180062217
+    second: huikan_13
+  - first:
+      213: 756426890156117762
+    second: huikan_14
+  - first:
+      213: 1663166803940445746
+    second: huikan_15
+  - first:
+      213: -447824323734407279
+    second: huikan_16
+  - first:
+      213: 5942917443910210311
+    second: huikan_17
+  - first:
+      213: 6679478802208035422
+    second: huikan_18
+  - first:
+      213: -6534345873130460876
+    second: huikan_19
+  - first:
+      213: -6614280432648966931
+    second: huikan_20
+  - first:
+      213: 5772710284899004629
+    second: huikan_21
+  - first:
+      213: -8448417390782061536
+    second: huikan_22
+  - first:
+      213: -8581909012469417311
+    second: huikan_23
+  - first:
+      213: 6556042126827975798
+    second: huikan_24
+  - first:
+      213: -8340992489862880752
+    second: huikan_25
+  - first:
+      213: 3142110379837013156
+    second: huikan_26
+  - first:
+      213: 1834286670880530645
+    second: huikan_27
+  - first:
+      213: -7885646316214752799
+    second: huikan_28
+  - first:
+      213: -2676288212289105943
+    second: huikan_29
+  - first:
+      213: -6845941800683395991
+    second: huikan_30
+  - first:
+      213: -7148843858391066674
+    second: huikan_31
+  - first:
+      213: 8732263403951265637
+    second: huikan_32
+  - first:
+      213: -5188996295345211316
+    second: huikan_33
+  - first:
+      213: 3112469213568883827
+    second: huikan_34
+  - first:
+      213: -16315589749699416
+    second: huikan_35
+  - first:
+      213: 5623457827304297312
+    second: huikan_36
+  - first:
+      213: -3336244616917024945
+    second: huikan_37
+  - first:
+      213: 2024196471496714602
+    second: huikan_38
+  - first:
+      213: 6382908206546620954
+    second: huikan_39
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: huikan_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 13
+        width: 30
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d69623abc8eee8b10800000000000000
+      internalID: 1985786773903665517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: huikan_1
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 13
+        width: 30
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 667ac49199e1d7240800000000000000
+      internalID: 4791019221495359334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: huikan_2
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 13
+        width: 30
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2725527ca119057d0800000000000000
+      internalID: -2931683813221903758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: huikan_3
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 13
+        width: 30
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fb232c31b5a54b90800000000000000
+      internalID: -7258213043800953863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: huikan_4
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 13
+        width: 30
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ec4c08a5526abfa0800000000000000
+      internalID: -5784202651372860191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: huikan_5
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 13
+        width: 30
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ae68aba6c5650c70800000000000000
+      internalID: 8936660939544489636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: huikan_6
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 13
+        width: 30
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06ec7be211bc3e660800000000000000
+      internalID: 7413992686240648800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

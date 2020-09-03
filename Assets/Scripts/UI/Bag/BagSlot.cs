@@ -57,8 +57,7 @@ namespace Game.UI
             {
                 _itemGroupGo.SetActive(true);
 
-                string iconName = ItemGroup.Item.IconName;
-                Sprite icon = ResManager.Sprites[iconName];
+                Sprite icon = Resources.Load<Sprite>(ItemGroup.Item.IconPath);
 
                  _itemImage.sprite = icon;
 

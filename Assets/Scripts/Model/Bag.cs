@@ -184,12 +184,12 @@ namespace Game
 
         /// <summary>
         /// 添加物品到某个位置
+        /// <param name="index">位置</param>
         /// <param name="item">物品</param>
         /// <param name="count">数量</param>
-        /// <param name="index">位置</param>
         /// <retures>剩余未添加的数量</retures>
         /// </summary>
-        public int AddItem(Item item, int count, int index)
+        public int AddItem(int index, Item item, int count)
         {
             if(item == null)
             {
@@ -254,13 +254,13 @@ namespace Game
 
         /// <summary>
         /// 添加物品组到某个位置
-        /// <param name="itemGroup">物品组</param>
         /// <param name="index">位置</param>
+        /// <param name="itemGroup">物品组</param>
         /// <retures>剩余未添加的数量</retures>
         /// </summary>
-        public int AddItemGroup(ItemGroup itemGroup, int index)
+        public int AddItemGroup(int index, ItemGroup itemGroup)
         {
-            return AddItem(itemGroup.Item, itemGroup.Count, index);
+            return AddItem(index, itemGroup.Item, itemGroup.Count);
         }
         /// <summary>
         /// 移动物品组

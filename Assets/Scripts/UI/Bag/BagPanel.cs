@@ -115,7 +115,7 @@ namespace Game.UI
             {
                 if (_itemInfoPanel == null)
                 {
-                    _itemInfoPanel = Instantiate(ResManager.Prefabs["ItemInfoPanel"], transform).GetComponent<ItemInfoPanel>();
+                    _itemInfoPanel = Instantiate(Resources.Load<GameObject>("Prefabs/UI/ItemInfoPanel"), transform).GetComponent<ItemInfoPanel>();
                 }
 
                 _itemInfoPanel.SetPos(bagSlot.transform.position);

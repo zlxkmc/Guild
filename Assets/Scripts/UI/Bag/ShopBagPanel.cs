@@ -36,11 +36,11 @@ namespace Game.UI
                     Bag playerBag = playerBagPanel.Bag;
 
                     ItemGroup purchased = Bag.RemoveItemGroup(originalBagSlot.Index);
-                    purchased.Count = playerBagPanel.Bag.AddItemGroup(purchased, targetBagSlot.Index);
+                    purchased.Count = playerBagPanel.Bag.AddItemGroup(targetBagSlot.Index, purchased);
 
                     if (purchased.Count > 0) // 没卖完
                     {
-                        Bag.AddItemGroup(purchased, originalBagSlot.Index);
+                        Bag.AddItemGroup(originalBagSlot.Index, purchased);
                     }
                 }
             }

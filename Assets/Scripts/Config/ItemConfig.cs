@@ -35,14 +35,14 @@ namespace Game
         public ItemType Type { get; set; }
 
         /// <summary>
-        /// 图标名
-        /// </summary>
-        public string IconName { get; set; }
-
-        /// <summary>
         /// 能否堆叠
         /// </summary>
         public bool Stack { get; set; }
+
+        /// <summary>
+        /// 图标路径
+        /// </summary>
+        public string IconPath { get; set; }
 
     }
  

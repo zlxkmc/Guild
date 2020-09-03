@@ -1,0 +1,10 @@
+﻿[
+  {
+    "Id": "0",
+    "Name": "挥砍",
+    "Cd": 1,
+    "Type": 0,
+    "ScriptName": "Huikan",
+    "IconPath": "Sprites/Skill/hukan/huikan_3"
+  }
+]

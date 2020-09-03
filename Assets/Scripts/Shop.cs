@@ -27,8 +27,8 @@ namespace Game
             Bag = new Bag();
             Bag.Size = 30;
 
+            Bag.AddItem(new Item("0"), 5);
             Bag.AddItem(new Item("1"), 5);
-            Bag.AddItem(new Item("2"), 5);
         }
 
         void Update()
@@ -49,7 +49,7 @@ namespace Game
             {
                 if (_bagPanel == null)
                 {
-                    GameObject go = Instantiate(ResManager.Prefabs["Bag"], GameObject.Find("Canvas").transform);
+                    GameObject go = Instantiate(Resources.Load<GameObject>("Prefabs/UI/Bag"), GameObject.Find("Canvas").transform);
                     go.GetComponent<RectTransform>().position = new Vector2(Screen.width / 2, Screen.height / 2);
 
                     go.SetActive(true);

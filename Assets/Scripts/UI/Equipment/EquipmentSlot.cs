@@ -50,8 +50,7 @@ namespace Game.UI
             {
                 Content.SetActive(true);
 
-                string iconName = Item.IconName;
-                Sprite icon = ResManager.Sprites[iconName];
+                Sprite icon = Resources.Load<Sprite>(Item.IconPath);
                 _itemImage.sprite = icon;
 
                // _countText.text = ItemGroup.Count + "";

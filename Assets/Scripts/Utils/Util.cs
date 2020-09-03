@@ -32,11 +32,20 @@ namespace Utils
         /// </summary>
         /// <param name="transform"></param>
         /// <param name="pos"></param>
-        public static void TransLookPos(Transform transform, Vector3 pos)
+        public static void Trans2DLookPos(Transform transform, Vector3 pos)
         {
-            Vector2 direction = (pos - transform.position).normalized;
-            direction = -direction;
-            float angle = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg;
+            Vector2 dir = (pos - transform.position).normalized;
+            Trans2DLookDir(transform, dir);
+        }
+
+        /// <summary>
+        /// 2d物体朝向目标方向
+        /// </summary>
+        /// <param name="transform"></param>
+        /// <param name="pos"></param>
+        public static void Trans2DLookDir(Transform transform, Vector3 dir)
+        {
+            float angle = -(Mathf.Atan2(dir.x, dir.y) * Mathf.Rad2Deg);
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
 
@@ -48,7 +57,7 @@ namespace Utils
         /// <param name="className">类型名</param>
         /// <param name="parameters">构造函数参数</param>
         /// <returns></returns>
-        public static T CreateInstance<T>(string nameSpace,string className)
+        public static T CreateInstance<T>(string nameSpace, string className, object[] args)
         {
             string fullName = nameSpace + "." + className;
             Type type = Type.GetType(fullName);
@@ -56,7 +65,8 @@ namespace Utils
             {
                 return default;
             }
-            T obj = (T) type.Assembly.CreateInstance(fullName);
+            T obj = (T) Activator.CreateInstance(type, args);
+            //T obj = (T) type.Assembly.CreateInstance(fullName);
             return obj;
         }
 

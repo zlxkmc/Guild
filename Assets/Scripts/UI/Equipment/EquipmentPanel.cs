@@ -66,7 +66,7 @@ namespace Game.UI
             {
                 if (_itemInfoPanel == null)
                 {
-                    _itemInfoPanel = Instantiate(ResManager.Prefabs["ItemInfoPanel"], transform).GetComponent<ItemInfoPanel>();
+                    _itemInfoPanel = Instantiate(Resources.Load<GameObject>("Prefabs/UI/ItemInfoPanel"), transform).GetComponent<ItemInfoPanel>();
                 }
 
                 _itemInfoPanel.SetPos(equipmentSlot.transform.position);
@@ -89,6 +89,29 @@ namespace Game.UI
         public override void OnSlotDragEnd(Slot originalSlot, Slot targetSlot, PointerEventData eventData)
         {
             base.OnSlotDragEnd(originalSlot, targetSlot, eventData);
+
+            EquipmentSlot originalEquipmentSlot = (EquipmentSlot) originalSlot;
+            if (originalEquipmentSlot.Item != null && targetSlot != null)
+            {
+                if (targetSlot.Manager.Flag == SlotManagerFlag.PlayerBag)
+                {
+                    BagSlot targetBagSlot = (BagSlot) targetSlot;
+                    if (targetBagSlot.ItemGroup == null) // 目标槽位空
+                    {
+                        Item unload = Character.UnEquip(originalEquipmentSlot.EquipmentSlotType);
+                        Character.Bag.AddItem(targetBagSlot.Index, unload, 1);
+                    }
+                    else // 目标槽有物品
+                    {
+                        Item originalEquipment = Character.GetEquipment(originalEquipmentSlot.EquipmentSlotType);
+                        if (Character.Equip(targetBagSlot.ItemGroup.Item, originalEquipmentSlot.EquipmentSlotType))  // 替换装备成功
+                        {
+                            Character.Bag.RemoveItemGroup(targetBagSlot.Index);
+                            Character.Bag.AddItem(targetBagSlot.Index, originalEquipment, 1);
+                        }
+                    }
+                }
+            }
         }
     }
 }

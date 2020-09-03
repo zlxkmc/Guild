@@ -11,11 +11,17 @@ namespace Game
         // Start is called before the first frame update
         void Start()
         {
+            StartCoroutine(Init());
+        }
+
+        IEnumerator Init()
+        {
             GameConfig.Init();
-            ResManager.Init();
             GameData.Init();
-            SceneManager.LoadScene("Demo1");
+            AsyncOperation async = SceneManager.LoadSceneAsync("Demo1", LoadSceneMode.Single);
+            yield return async;
         }
     }
+
 }
 

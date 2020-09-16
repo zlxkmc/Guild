@@ -16,6 +16,9 @@ namespace Game.UI
 
         [SerializeField]
         private EquipmentPanel _playerEquipmentPanel;
+
+        [SerializeField]
+        private SkillPanel _playerSkillPanel;
         
 
         void Start()
@@ -26,6 +29,8 @@ namespace Game.UI
             _playerBagPanel.gameObject.SetActive(true);
 
             _playerEquipmentPanel.Character = GameData.Player;
+
+            _playerSkillPanel.Character = GameData.Player;
         }
 
         // Update is called once per frame

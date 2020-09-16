@@ -44,7 +44,7 @@ namespace Game.UI
         /// 设置位置，尽量不超出边界
         /// </summary>
         /// <param name="pos"></param>
-        public void SetPos(Vector2 pos)
+        public void SetPos(Vector3 pos)
         {
             RectTransform rect = transform.GetComponent<RectTransform>();
             float width = rect.sizeDelta.x;

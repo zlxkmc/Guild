@@ -14,14 +14,18 @@ namespace Game.UI
         /// <summary>
         /// 玩家背包
         /// </summary>
-        PlayerBag,
+        PlayerBagPanel,
         /// <summary>
         /// 商店背包
         /// </summary>
-        ShopBag,
+        ShopBagPanel,
         /// <summary>
         /// 玩家装备面板
         /// </summary>
-        PlayerEquipments,
+        PlayerEquipmentsPanel,
+        /// <summary>
+        /// 技能面板
+        /// </summary>
+        SkillPanel,
     }
 }

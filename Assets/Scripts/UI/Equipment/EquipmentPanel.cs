@@ -5,7 +5,7 @@ namespace Game.UI
 {
     public class EquipmentPanel : SlotManager
     {        
-        public override SlotManagerFlag Flag => SlotManagerFlag.PlayerEquipments;
+        public override SlotManagerFlag Flag => SlotManagerFlag.PlayerEquipmentsPanel;
 
         /// <summary>
         /// 武器槽
@@ -38,7 +38,9 @@ namespace Game.UI
             {
                 if (DraggingSlot.Item != null)
                 {
-                    DraggingSlot.Content.transform.position = Input.mousePosition;
+                    GameObject canvas = GameObject.Find("Canvas");
+                    Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    DraggingSlot.Content.transform.position = new Vector3(pos.x, pos.y, canvas.transform.position.z);
                     DraggingSlot.Content.transform.parent = GameObject.Find("Canvas").transform;
                 }
             }
@@ -93,7 +95,7 @@ namespace Game.UI
             EquipmentSlot originalEquipmentSlot = (EquipmentSlot) originalSlot;
             if (originalEquipmentSlot.Item != null && targetSlot != null)
             {
-                if (targetSlot.Manager.Flag == SlotManagerFlag.PlayerBag)
+                if (targetSlot.Manager.Flag == SlotManagerFlag.PlayerBagPanel)
                 {
                     BagSlot targetBagSlot = (BagSlot) targetSlot;
                     if (targetBagSlot.ItemGroup == null) // 目标槽位空

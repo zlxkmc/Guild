@@ -16,7 +16,7 @@ namespace Game.UI
         [SerializeField]
         private Transform _content;
 
-        [Tooltip("背包槽的模板")]
+        [Tooltip("背包槽")]
         [SerializeField]
         private BagSlot _slot;
 
@@ -87,8 +87,11 @@ namespace Game.UI
             {
                 if(DraggingSlot.ItemGroup != null)
                 {
-                    DraggingSlot.ItemGroupGo.transform.position = Input.mousePosition;
-                    DraggingSlot.ItemGroupGo.transform.parent = GameObject.Find("Canvas").transform;
+                    GameObject canvas = GameObject.Find("Canvas");
+                    Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    DraggingSlot.ItemGroupGo.transform.position = new Vector3(pos.x, pos.y, canvas.transform.position.z);
+                    
+                    DraggingSlot.ItemGroupGo.transform.parent = canvas.transform;
                 }
             }
         }

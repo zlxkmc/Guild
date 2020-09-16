@@ -12,7 +12,7 @@ namespace Game.UI
     /// </summary>
     public class ShopBagPanel : BagPanel
     {
-        public override SlotManagerFlag Flag => SlotManagerFlag.ShopBag;
+        public override SlotManagerFlag Flag => SlotManagerFlag.ShopBagPanel;
 
         public override void OnSlotDragEnd(Slot originalSlot, Slot targetSlot, PointerEventData eventData)
         {
@@ -27,7 +27,7 @@ namespace Game.UI
                     BagSlot targetBagSlot = (BagSlot)targetSlot;
                     Bag.MoveItemGroup(originalBagSlot.Index, targetBagSlot.Index);
                 }
-                else if (targetSlot.Manager.Flag == SlotManagerFlag.PlayerBag) // 拖到玩家的背包格子上
+                else if (targetSlot.Manager.Flag == SlotManagerFlag.PlayerBagPanel) // 拖到玩家的背包格子上
                 {
                     BagSlot targetBagSlot = (BagSlot)targetSlot;
 

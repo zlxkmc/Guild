@@ -19,7 +19,6 @@ namespace Game
         private BagPanel _bagPanel;
         private SpriteOutline _spriteOutline;
 
-
         void Start()
         {
             _spriteOutline = transform.GetComponent<SpriteOutline>();
@@ -50,8 +49,8 @@ namespace Game
                 if (_bagPanel == null)
                 {
                     GameObject go = Instantiate(Resources.Load<GameObject>("Prefabs/UI/Bag"), GameObject.Find("Canvas").transform);
-                    go.GetComponent<RectTransform>().position = new Vector2(Screen.width / 2, Screen.height / 2);
-
+                    Vector3 pos = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width / 2, Screen.height / 2));
+                    go.transform.position = new Vector3(pos.x, pos.y, GameObject.Find("Canvas").transform.position.z);
                     go.SetActive(true);
                     _bagPanel = go.GetComponent<BagPanel>();
 
@@ -77,5 +76,4 @@ namespace Game
             Focus = false;
         }
     }
-
 }

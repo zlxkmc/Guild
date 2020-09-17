@@ -8,7 +8,7 @@ namespace Game
 {
     public enum UnitType
     {
-        Player,
+        Character,
         Monster,
     }
 }

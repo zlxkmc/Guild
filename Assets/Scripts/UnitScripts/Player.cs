@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using Utils;
 
 namespace Game
 {
@@ -17,7 +18,7 @@ namespace Game
             get { return GameSetting.MoveSpeed * GameData.Player.MoveSpeedRate; }
         }
 
-        public override UnitType UnitType => UnitType.Player;
+        public override TeamType TeamType => TeamType.Player;
 
         private void Awake()
         {
@@ -44,19 +45,12 @@ namespace Game
 
             Item item2 = new Item("1");
             Bag.AddItem(item2, 4);
-
             Bag.AddItem(1, item1, 1);
-
             Bag.AddItem(2, item2, 1);
-
             Bag.AddItem(2, item1, 2);
-
             Bag.AddItem(3, item2, 2);
-
             Bag.AddItem(4, item2, 5);
-
             Bag.AddItem(10, item1, 5);
-
             Bag.AddItem(11, item2, 5);
             Bag.AddItem(12, item2, 33);
             Bag.AddItem(13, item2, 77);
@@ -71,11 +65,8 @@ namespace Game
         {
             Move();
             //Aspect();
-        }
 
-        void LateUpdate()
-        {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            if (Input.GetKeyDown(KeyCode.Mouse0) && Util.IsMouseOverUI() == false)
             {
                 UseSkill("0");
             }

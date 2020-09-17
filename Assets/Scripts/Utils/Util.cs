@@ -101,5 +101,55 @@ namespace Utils
 
             return gameObjects;
         }
+
+        /// <summary>
+        /// 根据路径查找物体
+        /// </summary>
+        /// <param name="transform"></param>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public static Transform FindByPath(Transform transform, string path)
+        {
+            string[] names = path.Split('/');
+            Transform curTrans = transform;
+
+            foreach (var name in names)
+            {
+                curTrans = curTrans.Find(name);
+                if (curTrans == null)
+                {
+                    break;
+                }
+            }
+
+            return curTrans;
+        }
+
+        /// <summary>
+        /// 根据路径查找物体
+        /// </summary>
+        /// <param name="transform"></param>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public static Transform FindByPath(string path)
+        {
+            string[] names = path.Split('/');
+
+            Transform curTrans = GameObject.Find(names[0]).transform;
+            if(curTrans != null)
+            {
+                for (int i = 1; i < names.Length; i++)
+                {
+                    curTrans = curTrans.Find(names[i]);
+                    if (curTrans == null)
+                    {
+                        break;
+                    }
+                }
+            }
+
+            return curTrans;
+        }
+
     }
 }

@@ -4,7 +4,7 @@
     "Name": "挥砍",
     "Cd": 1,
     "Type": 0,
-    "ScriptName": "Huikan",
-    "IconPath": "Sprites/Skill/huikan/huikan_3"
+    "ScriptName": "Slash",
+    "IconPath": "Sprites/Skill/Slash/Slash_3"
   }
 ]

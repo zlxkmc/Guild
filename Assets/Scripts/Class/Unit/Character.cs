@@ -10,6 +10,8 @@ namespace Game
     /// </summary>
     public abstract class Character : Unit
     {
+        public override UnitType UnitType => UnitType.Character;
+
         /// <summary>
         /// 当前魔法值
         /// </summary>
@@ -93,7 +95,7 @@ namespace Game
         /// <summary>
         /// 生命上限
         /// </summary>
-        public int MaxHp
+        public override int MaxHp
         {
             get { return BaseMaxHp + 2 * Sta; }
         }
@@ -363,7 +365,7 @@ namespace Game
         /// <summary>
         /// 拥有的技能
         /// </summary>
-        private List<Skill> _skills = new List<Skill>();
+        private List<CharacterSkill> _skills = new List<CharacterSkill>();
 
         /// <summary>
         /// 技能数量
@@ -375,7 +377,7 @@ namespace Game
         /// </summary>
         /// <param name="skillId"></param>
         /// <returns></returns>
-        public Skill GetSkill(string skillId)
+        public CharacterSkill GetSkill(string skillId)
         {
             return _skills.Find(v => v.Id == skillId);
         }
@@ -385,7 +387,7 @@ namespace Game
         /// </summary>
         /// <param name="index"></param>
         /// <returns></returns>
-        public Skill GetSkill(int index)
+        public CharacterSkill GetSkill(int index)
         {
             return _skills[index];
         }
@@ -397,7 +399,7 @@ namespace Game
         {
             if (GetSkill(skillId) == null) // 没学过该技能
             {
-                Skill skill = new Skill(skillId);
+                CharacterSkill skill = new CharacterSkill(skillId);
                 _skills.Add(skill);
             }
         }
@@ -408,10 +410,10 @@ namespace Game
         /// <param name="skillId"></param>
         public void UseSkill(string skillId)
         {
-            Skill skill = GetSkill(skillId);
+            CharacterSkill skill = GetSkill(skillId);
             if (skill.CurCd <= 0)
             {
-                BaseSkill baseSkill = Util.CreateInstance<BaseSkill>("Game.SkillScripts", skill.ScriptName, new object[] { this, skill });
+                SkillScript baseSkill = Util.CreateInstance<SkillScript>("Game.SkillScripts", skill.ScriptName, new object[] { this, skill });
                 if (baseSkill.IsCanUse())
                 {
                     baseSkill.OnUse();

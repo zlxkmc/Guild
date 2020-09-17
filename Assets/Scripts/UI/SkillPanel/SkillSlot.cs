@@ -20,7 +20,7 @@ namespace Game.UI
         /// <summary>
         /// 这个格子的技能
         /// </summary>
-        public Skill Skill { get => Manager.Character.GetSkill(Index); }
+        public CharacterSkill Skill { get => Manager.Character.GetSkill(Index); }
 
         /// <summary>
         /// 可以用来拖拽的整体

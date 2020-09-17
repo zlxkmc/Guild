@@ -88,9 +88,9 @@ namespace Game.UI
                 if(DraggingSlot.ItemGroup != null)
                 {
                     GameObject canvas = GameObject.Find("Canvas");
-                    Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                    DraggingSlot.ItemGroupGo.transform.position = new Vector3(pos.x, pos.y, canvas.transform.position.z);
-                    
+                    //Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    //DraggingSlot.ItemGroupGo.transform.position = new Vector3(pos.x, pos.y, canvas.transform.position.z);
+                    DraggingSlot.ItemGroupGo.transform.position = Input.mousePosition;
                     DraggingSlot.ItemGroupGo.transform.parent = canvas.transform;
                 }
             }

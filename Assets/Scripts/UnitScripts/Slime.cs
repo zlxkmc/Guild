@@ -9,8 +9,8 @@ namespace Game
     /// <summary>
     /// 史莱姆
     /// </summary>
-    public class Slime : Character
+    public class Slime : Monster
     {
-        public override UnitType UnitType => UnitType.Monster;
+        public override TeamType TeamType => TeamType.Monster;
     }
 }

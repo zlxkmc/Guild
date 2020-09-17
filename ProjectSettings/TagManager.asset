@@ -14,10 +14,10 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Character
+  - Monster
+  - Skill
+  - Scene
   - 
   - 
   - 
@@ -41,9 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Character
-    uniqueID: 1094282303
+  - name: Scene
+    uniqueID: 399429287
     locked: 0
   - name: UI
-    uniqueID: 399429287
+    uniqueID: 1033309285
     locked: 0
